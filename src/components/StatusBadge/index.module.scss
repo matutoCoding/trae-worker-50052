@@ -1,0 +1,51 @@
+@use '@/styles/variables.scss' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6rpx 20rpx;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  line-height: 1.4;
+  white-space: nowrap;
+  font-weight: $font-weight-medium;
+}
+
+.badgeText {
+  font-size: $font-size-xs;
+}
+
+.tagSuccess {
+  background: rgba($color-status-healthy, 0.1);
+  color: $color-status-healthy;
+}
+
+.tagWarning {
+  background: rgba($color-status-treating, 0.1);
+  color: $color-status-treating;
+}
+
+.tagError {
+  background: rgba($color-status-critical, 0.1);
+  color: $color-status-critical;
+}
+
+.tagInfo {
+  background: rgba($color-status-recovered, 0.1);
+  color: $color-status-recovered;
+}
+
+.tagQuarantine {
+  background: rgba($color-status-quarantine, 0.1);
+  color: $color-status-quarantine;
+}
+
+.tagPrimary {
+  background: rgba($color-primary, 0.1);
+  color: $color-primary;
+}
+
+.tagAccent {
+  background: rgba($color-accent, 0.1);
+  color: $color-accent;
+}

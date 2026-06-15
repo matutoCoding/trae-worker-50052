@@ -1,0 +1,374 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.content {
+  padding: 0 $page-padding;
+}
+
+.headerCard {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-lg;
+  padding: $spacing-xl $spacing-lg;
+  margin: $spacing-lg 0;
+  color: $color-text-white;
+  box-shadow: 0 4rpx 20rpx rgba($color-primary, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -60rpx;
+    right: -40rpx;
+    width: 200rpx;
+    height: 200rpx;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+  }
+}
+
+.headerTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  display: block;
+  margin-bottom: $spacing-xs;
+  position: relative;
+  z-index: 1;
+}
+
+.headerDesc {
+  font-size: $font-size-md;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+
+.quickCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  display: flex;
+  align-items: center;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.quickCard1 { border-left: 8rpx solid $color-primary; }
+.quickCard2 { border-left: 8rpx solid $color-accent; }
+.quickCard3 { border-left: 8rpx solid $color-info; }
+.quickCard4 { border-left: 8rpx solid $color-success; }
+
+.quickIcon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-md;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  margin-right: $spacing-md;
+}
+
+.quickIcon1 { background: rgba($color-primary, 0.1); }
+.quickIcon2 { background: rgba($color-accent, 0.1); }
+.quickIcon3 { background: rgba($color-info, 0.1); }
+.quickIcon4 { background: rgba($color-success, 0.1); }
+
+.quickInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.quickTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.quickDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    width: 8rpx;
+    height: 32rpx;
+    background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: $radius-xs;
+    margin-right: $spacing-sm;
+  }
+}
+
+.moreBtn {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.tabs {
+  display: flex;
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xs;
+  margin-bottom: $spacing-md;
+  box-shadow: $shadow-card;
+}
+
+.tabItem {
+  flex: 1;
+  text-align: center;
+  padding: $spacing-md 0;
+  border-radius: $radius-md;
+  transition: all $transition-base;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.tabItemActive {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+
+  .tabText {
+    color: $color-text-white;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+.tabText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+}
+
+.feedingList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  margin-bottom: $spacing-md;
+}
+
+.feedingItem {
+  display: flex;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  transition: all $transition-fast;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:active {
+    background: $color-bg-hover;
+  }
+}
+
+.feedingTime {
+  width: 120rpx;
+  flex-shrink: 0;
+}
+
+.feedingTimeText {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  display: block;
+}
+
+.feedingPeriod {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.feedingContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.feedingAnimal {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.feedingDetail {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.feedingFeeder {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.feedingStatus {
+  flex-shrink: 0;
+  margin-left: $spacing-md;
+}
+
+.statusDone {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: $radius-round;
+  background: $color-success;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+}
+
+.statusPending {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: $radius-round;
+  background: $color-warning;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-white;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+}
+
+.cleanList {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  margin-bottom: $spacing-md;
+}
+
+.cleanItem {
+  display: flex;
+  align-items: center;
+  padding: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.cleanCage {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: $radius-md;
+  background: rgba($color-info, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: $spacing-md;
+  flex-shrink: 0;
+}
+
+.cleanCageText {
+  font-size: $font-size-md;
+  font-weight: $font-weight-bold;
+  color: $color-info;
+}
+
+.cleanInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.cleanAnimal {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.cleanMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.cleanMetaItem {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  display: flex;
+  align-items: center;
+}
+
+.cleanIcon {
+  margin-right: 4rpx;
+}
+
+.cleanBadge {
+  padding: 4rpx 12rpx;
+  border-radius: $radius-xs;
+  font-size: $font-size-xs;
+}
+
+.badgeDisinfected {
+  background: rgba($color-success, 0.1);
+  color: $color-success;
+}
+
+.badgeNormal {
+  background: rgba($color-text-tertiary, 0.1);
+  color: $color-text-tertiary;
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-xxl 0;
+}
+
+.emptyIcon {
+  font-size: 120rpx;
+  margin-bottom: $spacing-md;
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}

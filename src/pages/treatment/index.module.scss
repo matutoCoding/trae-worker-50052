@@ -1,0 +1,274 @@
+@use '@/styles/variables.scss' as *;
+
+.page {
+  min-height: 100vh;
+  background: $color-bg-page;
+  padding-bottom: 120rpx;
+}
+
+.filterBar {
+  background: $color-bg-card;
+  padding: $spacing-md $page-padding;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.filterScroll {
+  width: 100%;
+}
+
+.filterContainer {
+  @include scroll-x-container;
+}
+
+.filterItem {
+  @include scroll-x-item(auto);
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-round;
+  margin-right: $spacing-md;
+  background: $color-bg-hover;
+  transition: all $transition-base;
+  white-space: nowrap;
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.filterItemActive {
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+
+  .filterText {
+    color: $color-text-white;
+  }
+
+  .filterCount {
+    background: rgba(255, 255, 255, 0.3);
+    color: $color-text-white;
+  }
+}
+
+.filterText {
+  font-size: $font-size-md;
+  color: $color-text-secondary;
+  font-weight: $font-weight-medium;
+}
+
+.filterCount {
+  min-width: 40rpx;
+  height: 40rpx;
+  border-radius: $radius-round;
+  background: $color-bg-page;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: $spacing-sm;
+  padding: 0 $spacing-xs;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.content {
+  padding: 0 $page-padding;
+}
+
+.quickActions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-md;
+  margin: $spacing-lg 0;
+}
+
+.quickCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg $spacing-md;
+  text-align: center;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.quickCard1 { background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%); }
+.quickCard2 { background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%); }
+.quickCard3 { background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); }
+
+.quickIcon {
+  font-size: 56rpx;
+  margin-bottom: $spacing-sm;
+}
+
+.quickTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.quickDesc {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    width: 8rpx;
+    height: 32rpx;
+    background: linear-gradient(180deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: $radius-xs;
+    margin-right: $spacing-sm;
+  }
+}
+
+.moreBtn {
+  font-size: $font-size-sm;
+  color: $color-text-tertiary;
+  display: flex;
+  align-items: center;
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.timeline {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-card;
+  margin-bottom: $spacing-md;
+}
+
+.timelineItem {
+  display: flex;
+  padding-bottom: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  border-bottom: 1rpx solid $color-divider;
+  position: relative;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.timelineDot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: $radius-round;
+  background: $color-primary;
+  margin-top: $spacing-xs;
+  margin-right: $spacing-md;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 24rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2rpx;
+    height: calc(100% + 24rpx);
+    background: $color-border;
+  }
+}
+
+.timelineDotCheck { background: $color-info; }
+.timelineDotMedication { background: $color-warning; }
+.timelineDotSurgery { background: $color-error; }
+.timelineDotVaccination { background: $color-success; }
+
+.timelineContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-xs;
+}
+
+.timelineType {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  padding: 4rpx 16rpx;
+  border-radius: $radius-xs;
+}
+
+.timelineTypeCheck { background: rgba($color-info, 0.1); color: $color-info; }
+.timelineTypeMedication { background: rgba($color-warning, 0.1); color: $color-warning; }
+.timelineTypeSurgery { background: rgba($color-error, 0.1); color: $color-error; }
+.timelineTypeVaccination { background: rgba($color-success, 0.1); color: $color-success; }
+
+.timelineDate {
+  font-size: $font-size-xs;
+  color: $color-text-tertiary;
+}
+
+.timelineTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  display: block;
+  margin-bottom: $spacing-xs;
+}
+
+.timelineMeta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.timelineMetaItem {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  display: flex;
+  align-items: center;
+}
+
+.timelineMetaIcon {
+  margin-right: 4rpx;
+}
+
+.emptyState {
+  text-align: center;
+  padding: $spacing-xxl 0;
+}
+
+.emptyIcon {
+  font-size: 120rpx;
+  margin-bottom: $spacing-md;
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-size: $font-size-md;
+  color: $color-text-tertiary;
+}

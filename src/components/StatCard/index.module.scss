@@ -1,0 +1,70 @@
+@use '@/styles/variables.scss' as *;
+
+.statCard {
+  background: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-lg;
+  text-align: center;
+  box-shadow: $shadow-card;
+  transition: all $transition-base;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.statValue {
+  display: block;
+  font-size: $font-size-xxl;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: $spacing-sm;
+}
+
+.statTitle {
+  display: block;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.colorPrimary {
+  .statValue {
+    color: $color-primary;
+  }
+  border-top: 4rpx solid $color-primary;
+}
+
+.colorSuccess {
+  .statValue {
+    color: $color-status-healthy;
+  }
+  border-top: 4rpx solid $color-status-healthy;
+}
+
+.colorWarning {
+  .statValue {
+    color: $color-status-treating;
+  }
+  border-top: 4rpx solid $color-status-treating;
+}
+
+.colorError {
+  .statValue {
+    color: $color-status-critical;
+  }
+  border-top: 4rpx solid $color-status-critical;
+}
+
+.colorInfo {
+  .statValue {
+    color: $color-status-recovered;
+  }
+  border-top: 4rpx solid $color-status-recovered;
+}
+
+.colorAccent {
+  .statValue {
+    color: $color-accent;
+  }
+  border-top: 4rpx solid $color-accent;
+}
