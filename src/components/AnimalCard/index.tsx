@@ -18,7 +18,7 @@ const AnimalCard: React.FC<AnimalCardProps> = ({ animal, onClick }) => {
     if (onClick) {
       onClick();
     } else {
-      console.log('[AnimalCard] Clicked animal:', animal.name, animal.id);
+      Taro.navigateTo({ url: `/pages/health-assess/index?animalId=${animal.id}` });
     }
   };
 
@@ -29,7 +29,7 @@ const AnimalCard: React.FC<AnimalCardProps> = ({ animal, onClick }) => {
           className={styles.avatar}
           src={animal.avatar}
           mode='aspectFill'
-          lazyLoad
+          lazyLoad={animal.avatar?.startsWith('data:') ? false : true}
           onError={(e) => console.error('[AnimalCard] Image load error:', e.detail)}
         />
         <View className={styles.info}>

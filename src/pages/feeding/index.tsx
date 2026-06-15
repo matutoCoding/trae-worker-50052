@@ -73,11 +73,11 @@ const FeedingPage: React.FC = () => {
   };
 
   const handleAddFeeding = () => {
-    Taro.showToast({ title: '添加投喂记录功能开发中', icon: 'none' });
+    Taro.navigateTo({ url: '/pages/feeding-manage/index' });
   };
 
   const handleAddClean = () => {
-    Taro.showToast({ title: '添加清洁记录功能开发中', icon: 'none' });
+    Taro.navigateTo({ url: '/pages/feeding-manage/index' });
   };
 
   return (

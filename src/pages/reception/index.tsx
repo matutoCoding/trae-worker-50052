@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Input, Textarea, Button } from '@tarojs/components';
+import { View, Text, Input, Textarea, Button, Image } from '@tarojs/components';
 import Taro, { useDidShow } from '@tarojs/taro';
 import { useAnimal } from '../../store/AnimalContext';
 import { AnimalSource, HealthLevel } from '../../types/animal';
@@ -29,6 +29,7 @@ const ReceptionPage: React.FC = () => {
   });
 
   const [isQuarantine, setIsQuarantine] = useState(false);
+  const [avatarImages, setAvatarImages] = useState<string[]>([]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -47,7 +48,21 @@ const ReceptionPage: React.FC = () => {
   };
 
   const handleUpload = () => {
-    Taro.showToast({ title: '图片上传功能开发中', icon: 'none' });
+    Taro.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+    }).then((res) => {
+      const tempFilePath = res.tempFilePaths[0];
+      Taro.getFileSystemManager().readFile({
+        filePath: tempFilePath,
+        encoding: 'base64',
+        success: (fileRes) => {
+          const base64 = `data:image/jpeg;base64,${fileRes.data as string}`;
+          setAvatarImages(prev => [...prev, base64]);
+        }
+      });
+    });
   };
 
   const handleSubmit = () => {
@@ -64,7 +79,7 @@ const ReceptionPage: React.FC = () => {
       weight: parseFloat(formData.weight) || 0,
       status: isQuarantine ? 'quarantine' : 'treating' as const,
       receiveDate: formatDate(new Date()),
-      avatar: `https://picsum.photos/id/${200 + Math.floor(Math.random() * 100)}/300/300`,
+      avatar: avatarImages.length > 0 ? avatarImages[0] : `https://picsum.photos/id/${200 + Math.floor(Math.random() * 100)}/300/300`,
       isQuarantine,
       quarantineEndDate: isQuarantine ? formatDate(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)) : undefined,
       treatmentPlan: '',
@@ -291,6 +306,13 @@ const ReceptionPage: React.FC = () => {
             <Text className={styles.uploadIcon}>📷</Text>
             <Text className={styles.uploadText}>点击上传动物照片</Text>
           </View>
+          {avatarImages.length > 0 && (
+            <View className={styles.previewContainer}>
+              {avatarImages.map((img, index) => (
+                <Image key={index} className={styles.previewImage} src={img} mode='aspectFill' />
+              ))}
+            </View>
+          )}
         </View>
 
         <Button className={styles.submitBtn} onClick={handleSubmit}>

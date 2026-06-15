@@ -76,8 +76,7 @@ const AdoptionPage: React.FC = () => {
   };
 
   const handleAdoptableClick = (animalId: string) => {
-    console.log('[AdoptionPage] Click adoptable animal:', animalId);
-    Taro.showToast({ title: '查看详情功能开发中', icon: 'none' });
+    Taro.navigateTo({ url: `/pages/health-assess/index?animalId=${animalId}` });
   };
 
   const handleReleaseClick = (recordId: string) => {
